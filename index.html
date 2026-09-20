@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D Diary</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #eadfd2;
+      font-family: Georgia, serif;
+      overflow: hidden;
+    }
+
+    .book {
+      width: 290px;
+      height: 410px;
+      background: #65452f;
+      border-radius: 10px 18px 18px 10px;
+      box-shadow:
+        10px 12px 25px rgba(0,0,0,0.25),
+        inset -8px 0 0 rgba(0,0,0,0.12);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .book:hover {
+      transform: translateY(-8px) rotate(-1deg);
+      box-shadow:
+        14px 20px 30px rgba(0,0,0,0.28),
+        inset -8px 0 0 rgba(0,0,0,0.12);
+    }
+
+    .book::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 5px;
+    }
+
+    .cover {
+      text-align: center;
+      color: #f4e6d7;
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter {
+      font-family: Georgia, serif;
+      font-size: 105px;
+      line-height: 1;
+      font-weight: normal;
+      text-shadow: 3px 4px 0 rgba(0,0,0,0.18);
+    }
+
+    .title {
+      margin-top: 12px;
+      font-size: 22px;
+      letter-spacing: 7px;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      opacity: 0.75;
+    }
+
+    .leaf {
+      position: absolute;
+      font-size: 25px;
+      opacity: 0.8;
+    }
+
+    .leaf.one {
+      top: 48px;
+      left: 42px;
+      transform: rotate(-20deg);
+    }
+
+    .leaf.two {
+      bottom: 48px;
+      right: 38px;
+      transform: rotate(25deg);
+    }
+
+    .hint {
+      position: absolute;
+      bottom: 35px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #65452f;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="book" onclick="openDiary()">
+
+    <div class="cover">
+      <div class="letter">D</div>
+      <div class="title">DIARY</div>
+      <div class="subtitle">MY LITTLE WORLD</div>
+    </div>
+
+    <div class="leaf one">🍂</div>
+    <div class="leaf two">🍁</div>
+
+  </div>
+
+  <div class="hint">CLICK THE DIARY TO OPEN</div>
+
+  <script>
+    function openDiary() {
+      alert("D Diary is opening... 📖");
+    }
+  </script>
+
+</body>
+</html>
