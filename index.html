@@ -1,141 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>D Diary</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>D Diary</title>
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #eadfd2;
-      font-family: Georgia, serif;
-      overflow: hidden;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .book {
-      width: 290px;
-      height: 410px;
-      background: #65452f;
-      border-radius: 10px 18px 18px 10px;
-      box-shadow:
-        10px 12px 25px rgba(0,0,0,0.25),
-        inset -8px 0 0 rgba(0,0,0,0.12);
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eadfd3;
+  font-family: Georgia, serif;
+  overflow: hidden;
+}
 
-    .book:hover {
-      transform: translateY(-8px) rotate(-1deg);
-      box-shadow:
-        14px 20px 30px rgba(0,0,0,0.28),
-        inset -8px 0 0 rgba(0,0,0,0.12);
-    }
+/* DIARY COVER */
+.diary {
+  position: relative;
+  width: 88vw;
+  max-width: 360px;
+  aspect-ratio: 0.72;
+  background: #65452f;
+  border-radius: 10px 18px 18px 10px;
+  box-shadow:
+    12px 15px 30px rgba(50, 30, 20, 0.35),
+    inset -8px 0 0 rgba(0,0,0,0.12);
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid #4d3424;
+}
 
-    .book::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 5px;
-    }
+/* little spine */
+.diary::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: rgba(255,255,255,0.08);
+}
 
-    .cover {
-      text-align: center;
-      color: #f4e6d7;
-      position: relative;
-      z-index: 2;
-    }
+/* PHOTO COLLAGE */
+.collage {
+  position: absolute;
+  inset: 20px;
+}
 
-    .letter {
-      font-family: Georgia, serif;
-      font-size: 105px;
-      line-height: 1;
-      font-weight: normal;
-      text-shadow: 3px 4px 0 rgba(0,0,0,0.18);
-    }
+.photo {
+  position: absolute;
+  width: 38%;
+  height: 28%;
+  object-fit: cover;
+  background: white;
+  padding: 6px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
 
-    .title {
-      margin-top: 12px;
-      font-size: 22px;
-      letter-spacing: 7px;
-    }
+.photo1 {
+  left: 2%;
+  top: 3%;
+  transform: rotate(-7deg);
+}
 
-    .subtitle {
-      margin-top: 14px;
-      font-family: Arial, sans-serif;
-      font-size: 10px;
-      letter-spacing: 4px;
-      opacity: 0.75;
-    }
+.photo2 {
+  right: 2%;
+  top: 1%;
+  transform: rotate(6deg);
+}
 
-    .leaf {
-      position: absolute;
-      font-size: 25px;
-      opacity: 0.8;
-    }
+.photo3 {
+  left: 5%;
+  top: 36%;
+  transform: rotate(4deg);
+}
 
-    .leaf.one {
-      top: 48px;
-      left: 42px;
-      transform: rotate(-20deg);
-    }
+.photo4 {
+  right: 3%;
+  top: 34%;
+  transform: rotate(-6deg);
+}
 
-    .leaf.two {
-      bottom: 48px;
-      right: 38px;
-      transform: rotate(25deg);
-    }
+.photo5 {
+  left: 9%;
+  bottom: 4%;
+  transform: rotate(-5deg);
+}
 
-    .hint {
-      position: absolute;
-      bottom: 35px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      color: #65452f;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
-      opacity: 0.7;
-    }
-  </style>
+.photo6 {
+  right: 8%;
+  bottom: 3%;
+  transform: rotate(7deg);
+}
+
+.photo7 {
+  left: 34%;
+  top: 26%;
+  width: 34%;
+  height: 25%;
+  transform: rotate(-2deg);
+  z-index: 3;
+}
+
+/* DARK CENTER */
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 68%;
+  padding: 20px 10px;
+  text-align: center;
+  background: rgba(78, 48, 32, 0.88);
+  border: 1px solid rgba(255,255,255,0.3);
+  z-index: 5;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.bigD {
+  font-family: Georgia, serif;
+  font-size: 70px;
+  line-height: 0.9;
+  color: #f5e8d8;
+  font-style: italic;
+}
+
+.title {
+  margin-top: 8px;
+  color: #f5e8d8;
+  font-size: 25px;
+  letter-spacing: 7px;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: #dcbca7;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.season {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  color: #f5e8d8;
+  font-size: 9px;
+  letter-spacing: 3px;
+  border: 1px solid rgba(245,232,216,0.6);
+  padding: 7px 12px;
+}
+
+/* vintage decoration */
+.sticker {
+  position: absolute;
+  z-index: 7;
+  color: #f1d8c4;
+  font-size: 11px;
+  letter-spacing: 2px;
+  background: #8a6045;
+  padding: 6px 8px;
+  box-shadow: 2px 3px 7px rgba(0,0,0,0.25);
+}
+
+.sticker.one {
+  top: 12px;
+  right: 15px;
+  transform: rotate(8deg);
+}
+
+.sticker.two {
+  bottom: 18px;
+  left: 15px;
+  transform: rotate(-7deg);
+}
+
+/* click hint */
+.hint {
+  position: fixed;
+  bottom: 18px;
+  color: #65452f;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="book" onclick="openDiary()">
+<div class="diary" onclick="openDiary()">
 
-    <div class="cover">
-      <div class="letter">D</div>
-      <div class="title">DIARY</div>
-      <div class="subtitle">MY LITTLE WORLD</div>
-    </div>
+  <div class="collage">
 
-    <div class="leaf one">🍂</div>
-    <div class="leaf two">🍁</div>
+    <img class="photo photo1"
+    src="https://i.ibb.co/wh7FFvHw/IMG-6811.jpg">
+
+    <img class="photo photo2"
+    src="https://i.ibb.co/YFd0tNvy/IMG-6809.jpg">
+
+    <img class="photo photo3"
+    src="https://i.ibb.co/KxR3hMr4/IMG-6807.jpg">
+
+    <img class="photo photo4"
+    src="https://i.ibb.co/3YdyHMjH/IMG-6808.jpg">
+
+    <img class="photo photo5"
+    src="https://i.ibb.co/Kx76F1Mm/IMG-6627.jpg">
+
+    <img class="photo photo6"
+    src="https://i.ibb.co/HfKyR54q/IMG-6629.jpg">
+
+    <img class="photo photo7"
+    src="https://i.ibb.co/hxC02BbJ/B4-EFCE07-0454-4-F9-F-94-B2-9756-CAB5-EED0.gif">
 
   </div>
 
-  <div class="hint">CLICK THE DIARY TO OPEN</div>
+  <div class="center">
+    <div class="bigD">D</div>
+    <div class="title">DIARY</div>
+    <div class="subtitle">MY LITTLE WORLD</div>
+  </div>
 
-  <script>
-    function openDiary() {
-      alert("D Diary is opening... 📖");
-    }
-  </script>
+  <div class="sticker one">2000s</div>
+  <div class="sticker two">AUTUMN</div>
+
+  <div class="season">AUTUMN EDITION</div>
+
+</div>
+
+<div class="hint">tap the diary to open ♡</div>
+
+<script>
+function openDiary() {
+  alert("D Diary is opening... 📖");
+}
+</script>
 
 </body>
 </html>
